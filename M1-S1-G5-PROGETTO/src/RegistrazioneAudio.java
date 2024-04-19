@@ -1,8 +1,9 @@
 public class RegistrazioneAudio extends Riproduzione{
     public RegistrazioneAudio(String title, int time,int volume, boolean play) {
-        super(title, time,volume,play,false,0);
+        super(title, time,volume,play);
     }
-
+//facendo un override del metodo astratto ho implementato la logica per stampare a video le richieste dell'ercizio
+    //iterando i valori inseriti e restituendo tutto come stringa.
     @Override
     protected String play() {
         if (play) {
@@ -29,6 +30,7 @@ public class RegistrazioneAudio extends Riproduzione{
         return null;
     }
 
+    //metodo necessario per poter utilizzare il case:4 nel main.
     @Override
     protected String getInfo() {
         return "Il titolo della registrazione è: " + title + ", durata: "

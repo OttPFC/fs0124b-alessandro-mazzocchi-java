@@ -6,15 +6,29 @@ public abstract class Riproduzione {
     protected int luminosita;
     protected boolean play;
     protected boolean show;
-    public Riproduzione(String title, int time,int volume, boolean play,boolean show, int luminosita) {
+    //dichiaro i costruttori per le classi che andrò ad utilizzare sfruttando l'overloading
+    public Riproduzione(String title, int time,int volume, boolean play) {
         this.title = title;
         this.time = time;
         this.volume = volume;
         this.play = play;
+    }
+    public Riproduzione(String title, int time,int volume, boolean play, int luminosita) {
+        this.title = title;
+        this.time = time;
+        this.volume = volume;
+        this.play = play;
+        this.luminosita = luminosita;
+    }
+    public Riproduzione(String title, int time, boolean show, int luminosita) {
+        this.title = title;
+        this.time = time;
         this.show = show;
         this.luminosita = luminosita;
     }
-
+    //rendo protected i metodi da far utilizzare solo ai figli
+    //poi con abstract faccio in modo di implementare i metodi nelle classi concrete
+    //per poi fare un override e personalizzare il metodo.
     protected abstract String play();
     protected abstract String show();
     protected abstract String getInfo();

@@ -1,14 +1,14 @@
 public class Immagine extends Riproduzione{
 
     public Immagine(String title, int time, boolean show, int luminosita) {
-        super(title, time,0,false,show,luminosita);
+        super(title, time,show,luminosita);
     }
 
     @Override
     protected String play() {
         return null;
     }
-
+//stesso delle altre classi
     @Override
     protected String show(){
         if (show) {

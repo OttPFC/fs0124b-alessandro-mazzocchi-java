@@ -1,9 +1,9 @@
 public class Video extends Riproduzione{
 
     public Video(String title, int time,int volume, boolean play, int luminosita) {
-        super(title, time,volume, play,false,luminosita);
+        super(title, time,volume, play,luminosita);
     }
-
+//stesso di RegistrazioniAudio con aggiunta dell'argomento luminosita
     @Override
     protected String play() {
         if (play) {
@@ -34,6 +34,9 @@ public class Video extends Riproduzione{
     protected String show() {
         return null;
     }
+
+    //metodi per alzare o abbassare la luminosita con un controllo che verifica se i valori sono rispettivamente più alti o piu bassi del valore già presente.
+    //riassegnando poi il valore a quekllo iniziale
 
     public int abbassaLuminosita(int lum){
         if(lum > luminosita){
