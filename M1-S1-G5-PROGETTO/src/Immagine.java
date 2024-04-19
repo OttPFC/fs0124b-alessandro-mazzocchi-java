@@ -2,7 +2,6 @@ public class Immagine extends Riproduzione{
 
     public Immagine(String title, int time, boolean show, int luminosita) {
         super(title, time,0,false,show,luminosita);
-
     }
 
     @Override
@@ -27,16 +26,13 @@ public class Immagine extends Riproduzione{
             }
             return result.toString();
         } else {
-            return "Non è possibile mettere visulizzare il tuo elemento!";
+            return "Non è possibile visulizzare il tuo elemento!";
         }
     }
 
     @Override
     protected String getInfo() {
-        return "Il titolo dell'immagine è: " + title + ", durata: " + time + ", livello volume: " +  luminosita + ", show attivo: " + show + "\n";
-
+        return "Il titolo dell'immagine è: " + title + ", durata: " + time +
+                ", livello volume: " +  luminosita + ", show attivo: " + show + "\n";
     }
-
-
-
 }

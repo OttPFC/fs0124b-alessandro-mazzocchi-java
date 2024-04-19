@@ -31,8 +31,7 @@ public class RegistrazioneAudio extends Riproduzione{
 
     @Override
     protected String getInfo() {
-        return "Il titolo della registrazione è: " + title + ", durata: " + time + ", livello volume : " + volume + ", play attivo: " + play + "\n" ;
-
+        return "Il titolo della registrazione è: " + title + ", durata: "
+                + time + ", livello volume : " + volume + ", play attivo: " + play + "\n" ;
     }
-
 }

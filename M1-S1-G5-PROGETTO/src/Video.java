@@ -55,7 +55,8 @@ public class Video extends Riproduzione{
 
     @Override
     protected String getInfo() {
-        return "Il titolo del video è: " + title + ", durata: " + time + ", livello volume: " + volume + ", luminosita: " + luminosita + ", play attivo: " + play + "\n";
-
+        return "Il titolo del video è: " + title + ", durata: " + time +
+                ", livello volume: " + volume + ", luminosita: " + luminosita +
+                ", play attivo: " + play + "\n";
     }
 }

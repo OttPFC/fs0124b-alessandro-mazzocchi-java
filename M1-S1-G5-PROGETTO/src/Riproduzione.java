@@ -16,8 +16,8 @@ public abstract class Riproduzione {
     }
 
     protected abstract String play();
-
     protected abstract String show();
+    protected abstract String getInfo();
 
     public int abbassaVolume(int vol){
         if(vol > volume){
@@ -36,6 +36,6 @@ public abstract class Riproduzione {
         }
     }
 
-    protected abstract String getInfo();
+
 
 }
