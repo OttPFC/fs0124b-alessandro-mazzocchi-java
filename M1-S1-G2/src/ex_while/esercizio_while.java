@@ -8,6 +8,7 @@ public class esercizio_while {
         Scanner tastiera = new Scanner(System.in);
         String str = tastiera.nextLine();
 
+
         String[] splitted = str.split("");
 
         StringBuilder sb = new StringBuilder();
