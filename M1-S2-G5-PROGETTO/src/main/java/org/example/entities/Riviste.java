@@ -1,39 +1,28 @@
 package org.example.entities;
 
-public class Riviste extends Biblioteca{
-    private long isbn;
-    private String title;
-    private int anno;
-    private int pages;
-    private String[] period = new String[]{"SETTIMANALE", "MENSILE", "SEMESTRALE"};
+import java.io.Serializable;
 
-    public Riviste(long isbn, String title, int anno, int pages, String[] period) {
-        this.isbn = isbn;
-        this.title = title;
-        this.anno = anno;
-        this.pages = pages;
+public class Riviste extends Biblioteca implements Serializable {
+
+    private Period period;
+        public Riviste(long isbn, String title, int anno, int pages,Period period) {
+        super(isbn, title, anno, pages);
         this.period = period;
     }
 
-    public long getIsbn() {
-        return isbn;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public int getAnno() {
-        return anno;
-    }
-
-    public int getPages() {
-        return pages;
-    }
-
-    public String[] getPeriod() {
+    public Period getPeriod() {
         return period;
     }
 
-    public String toString() {return "Rivista: " + title+ "\nYear: " + anno+ "\nPages: " + pages+"\nPeriod: " + period;}
+    public void setPeriod(Period period) {
+            this.period = period;
+
+    }
+    @Override
+    public String Info() {
+            return "Rivista: " + getTitle()+ "ISBN: " + getIsbn() + "\nYear: " + getAnno()+
+                    "\nPages: " + getPages()+"\nPeriod: " + period;
+        }
+
+
 }
