@@ -1,8 +1,6 @@
 package org.example.entities;
 
-import java.io.Serializable;
-
-public class Riviste extends Biblioteca implements Serializable {
+public class Riviste extends Biblioteca{
 
     private Period period;
         public Riviste(long isbn, String title, int anno, int pages,Period period) {
@@ -14,13 +12,9 @@ public class Riviste extends Biblioteca implements Serializable {
         return period;
     }
 
-    public void setPeriod(Period period) {
-            this.period = period;
-
-    }
     @Override
-    public String Info() {
-            return "Rivista: " + getTitle()+ "ISBN: " + getIsbn() + "\nYear: " + getAnno()+
+    public String toString() {
+            return "\nRivista: " + getTitle()+ "\nISBN: " + getIsbn() + "\nYear: " + getAnno()+
                     "\nPages: " + getPages()+"\nPeriod: " + period;
         }
 

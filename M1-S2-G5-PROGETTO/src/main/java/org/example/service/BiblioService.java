@@ -8,9 +8,9 @@ public interface BiblioService {
 
     void addBooks(Biblioteca books);
 
-    void removeByISBN(long isbn);
+    void removeByIsbn(long isbn);
 
-    List<Biblioteca> findByISBN(long isbn);
+    List<Biblioteca> findByIsbn(long isbn);
 
     List<Biblioteca> findByYear(int anno);
 
@@ -18,8 +18,8 @@ public interface BiblioService {
 
     List<Biblioteca> getAllBooks();
 
-    void save();
+    void salva();
 
-    void load();
+    void carica();
 
 }

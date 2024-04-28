@@ -6,15 +6,14 @@ import org.example.entities.Period;
 import org.example.service.FileBiblioService;
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
-    private static void aggiungiLibro(Scanner scanner, FileBiblioService biblio ){
+    private static void aggiungiLibro(Scanner scanner, FileBiblioService biblio) {
         System.out.println("Inserisci il titolo: ");
         String title = scanner.nextLine();
         System.out.println("Inserisci l'isbn: ");
         long isbn = scanner.nextLong();
+        scanner.nextLine();
         System.out.println("Inserisci l'autore: ");
         String author = scanner.nextLine();
         System.out.println("Inserisci il genere: ");
@@ -23,23 +22,24 @@ public class Main {
         int anno = scanner.nextInt();
         System.out.println("Inserisci il numero di pagine: ");
         int pages = scanner.nextInt();
-        Libri book = new Libri(isbn,title,anno,pages, author, gen);
+        Libri book = new Libri(isbn, title, anno, pages, author, gen);
         biblio.addBooks(book);
         System.out.println("Libro aggiunto con successo!");
     }
+
 
     private static void aggiungiRiviste(Scanner scanner, FileBiblioService biblio) {
         System.out.println("Inserisci il titolo: ");
         String title = scanner.nextLine();
         System.out.println("Inserisci l'isbn: ");
         long isbn = scanner.nextLong();
-        scanner.nextLine(); // Consuma il newline residuo
+        scanner.nextLine();
         System.out.println("Inserisci l'anno di pubblicazione: ");
         int anno = scanner.nextInt();
-        scanner.nextLine(); // Consuma il newline residuo
+        scanner.nextLine();
         System.out.println("Inserisci il numero di pagine: ");
         int pages = scanner.nextInt();
-        scanner.nextLine(); // Consuma il newline residuo
+        scanner.nextLine();
         System.out.println("Con quale periodicità ricevere la rivista ?");
         System.out.println("1 - Settimanale");
         System.out.println("2 - Mensile");
@@ -76,7 +76,7 @@ public class Main {
             System.out.println("5 - Cerca per Anno.");
             System.out.println("6 - Elimina per isbn.");
             System.out.println("7 - Visualizza tutti.");
-            System.out.print("Inserisci opzione: ");
+            System.out.print("\nInserisci opzione: ");
             i = Integer.parseInt(tastiera.nextLine());
             switch (i) {
                 case 1:
@@ -88,22 +88,22 @@ public class Main {
                 case 3:
                     System.out.println("Inserisci l'isbn: ");
                     long isbn = tastiera.nextLong();
-                    biblio.findByISBN(isbn);
+                    biblio.findByIsbn(isbn).forEach(System.out::println);
                     break;
                 case 4:
                     System.out.println("Inserisci l'autore: ");
                     String author = tastiera.nextLine();
-                    biblio.findByAuthor(author);
+                    biblio.findByAuthor(author).forEach(System.out::println);
                     break;
                 case 5:
                     System.out.println("Inserisci l'anno: ");
                     int anno = tastiera.nextInt();
-                    biblio.findByYear(anno);
+                    biblio.findByYear(anno).forEach(System.out::println);
                     break;
                 case 6:
                     System.out.println("Inserisci l'isbn: ");
                     int isbni = tastiera.nextInt();
-                    biblio.removeByISBN(isbni);
+                    biblio.removeByIsbn(isbni);
                     break;
                 case 7:
                     biblio.getAllBooks().forEach(System.out::println);

@@ -44,7 +44,7 @@ public abstract class Biblioteca {
     public int getPages() {
         return pages;
     }
-    public String Info() {
+    public String toString() {
         return "Libro: " + title + "\nAuthor: " + "\nYear: " + anno + "\nPages: " + pages;
     }
 }

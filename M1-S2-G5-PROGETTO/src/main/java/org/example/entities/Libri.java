@@ -2,8 +2,8 @@ package org.example.entities;
 
 public class Libri  extends Biblioteca {
 
-    private String author;
-    private String gen;
+    private final String author;
+    private final String gen;
     public Libri(long isbn, String title, int anno, int pages, String author,String gen) {
         super(isbn, title, anno, pages);
         this.author = author;
@@ -19,9 +19,9 @@ public class Libri  extends Biblioteca {
     }
 
     @Override
-    public String Info() {
+    public String toString() {
         return
-                "Libro: " + getTitle() + "\nISBN" + getIsbn() + "\nAuthor: " +
+                "\nLibro: " + getTitle() + "\nISBN: " + getIsbn() + "\nAuthor: " +
                         author + "\nYear: " + getAnno() + "\nPages: " + getPages();
     }
 
