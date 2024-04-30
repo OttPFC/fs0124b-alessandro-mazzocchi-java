@@ -15,7 +15,7 @@ import java.time.LocalDate;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
-private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("test");
+private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("gestioneEventi");
 
     public static void main(String[] args) {
 
