@@ -9,7 +9,7 @@ public class LocationDAO {
 
     public LocationDAO(EntityManager em) {this.em = em;}
 
-    public void saveLocation(Location location){
+    public void save(Location location){
         try{
             em.getTransaction().begin();
             em.persist(location);
@@ -23,7 +23,7 @@ public class LocationDAO {
 
     public Location getLocation(String name) throws ClassNotFoundException {return em.find(Location.class,name);}
 
-    public void deleteLocation(String name) throws ClassNotFoundException {
+    public void delete(String name) throws ClassNotFoundException {
         Location location = getLocation(name);
         try{
             em.getTransaction().begin();

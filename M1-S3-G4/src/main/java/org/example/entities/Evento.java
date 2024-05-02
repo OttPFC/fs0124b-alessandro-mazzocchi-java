@@ -3,9 +3,12 @@ package org.example.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
+
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name="eventi")
-public class Evento {
+public  class Evento {
     @Id
     @GeneratedValue
     private long id;
@@ -16,14 +19,22 @@ public class Evento {
     private TipoEvento tipoEvento;
     private int numeroMassimoPartecipanti;
 
+    @ManyToOne
+    @JoinColumn(name = "luogo_evento_id")
+    private Location luogoEvento;
+
+    @OneToMany(mappedBy = "evento", cascade = CascadeType.REMOVE)
+    private List<Partecipazioni> listaPartecipazioni;
+
 public Evento() {};
 
-public Evento(String titolo, LocalDate dataEvento, String descrizione, TipoEvento tipoEvento, int numeroMassimoPartecipanti) {
+public Evento(String titolo, LocalDate dataEvento, String descrizione, TipoEvento tipoEvento, int numeroMassimoPartecipanti,Location location) {
     this.titolo = titolo;
     this.dataEvento = dataEvento;
     this.descrizione = descrizione;
     this.tipoEvento = tipoEvento;
     this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
+    this.luogoEvento = location;
 }
 
     public long getId() {
@@ -74,6 +85,22 @@ public Evento(String titolo, LocalDate dataEvento, String descrizione, TipoEvent
         this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
     }
 
+    public Location getLuogoEvento() {
+        return luogoEvento;
+    }
+
+    public void setLuogoEvento(Location luogoEvento) {
+        this.luogoEvento = luogoEvento;
+    }
+
+    public List<Partecipazioni> getListaPartecipazioni() {
+        return listaPartecipazioni;
+    }
+
+    public void setListaPartecipazioni(List<Partecipazioni> listaPartecipazioni) {
+        this.listaPartecipazioni = listaPartecipazioni;
+    }
+
     @Override
     public String toString() {
         return "Evento{" +
@@ -83,6 +110,7 @@ public Evento(String titolo, LocalDate dataEvento, String descrizione, TipoEvent
                 ", descrizione='" + descrizione + '\'' +
                 ", tipoEvento=" + tipoEvento +
                 ", numeroMassimoPartecipanti=" + numeroMassimoPartecipanti +
+                ", location=" + luogoEvento +
                 '}';
     }
 }

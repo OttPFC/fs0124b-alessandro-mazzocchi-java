@@ -1,6 +1,6 @@
 package org.example.entities;
 
-public enum Sesso {
+public enum Genere {
     M,
     F
 }

@@ -11,7 +11,7 @@ public class PartecipazioneDAO {
         this.em = em;
     }
 
-    public void savePartecipazione(Partecipazioni p){
+    public void save(Partecipazioni p){
         try{
             em.getTransaction().begin();
             em.persist(p);
@@ -25,7 +25,7 @@ public class PartecipazioneDAO {
 
     public Partecipazioni getPartecipazioni(long id){return em.find(Partecipazioni.class, id);}
 
-    public void deletePartecipazioni(long id){
+    public void delete(long id){
         try{
             em.getTransaction().begin();
             em.remove(id);

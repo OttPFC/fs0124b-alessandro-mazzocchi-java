@@ -19,7 +19,7 @@ public class Persona {
     private LocalDate dataDiNascita;
 
     @Enumerated(EnumType.STRING)
-    private Sesso sesso;
+    private Genere genere;
 
     @OneToMany(mappedBy = "persona")
     private final List<Partecipazioni> partecipazione = new ArrayList<>();
@@ -28,12 +28,12 @@ public class Persona {
 
     }
 
-    public Persona(String name, String surname, String email, LocalDate dataDiNascita, Sesso sesso) {
+    public Persona(String name, String surname, String email, LocalDate dataDiNascita, Genere genere) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.dataDiNascita = dataDiNascita;
-        this.sesso = sesso;
+        this.genere = genere;
 
     }
 
@@ -77,12 +77,12 @@ public class Persona {
         this.dataDiNascita = dataDiNascita;
     }
 
-    public Sesso getSesso() {
-        return sesso;
+    public Genere getSesso() {
+        return genere;
     }
 
-    public void setSesso(Sesso sesso) {
-        this.sesso = sesso;
+    public void setSesso(Genere genere) {
+        this.genere = genere;
     }
 
     public List<Partecipazioni> getPartecipazione() {
@@ -97,7 +97,7 @@ public class Persona {
                 "\nsurname='" + surname + '\'' +
                 "\nemail='" + email + '\'' +
                 "\ndataDiNascita=" + dataDiNascita +
-                "\nsesso=" + sesso +
+                "\ngenere=" + genere +
                 "\npartecipazione=" + partecipazione;
     }
 }
