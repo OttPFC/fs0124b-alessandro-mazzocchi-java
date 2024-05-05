@@ -6,11 +6,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "prestiti")
-public class Prestito {
-
-    @Id
-    @GeneratedValue
-    private long id;
+public class Prestito extends BaseEntity{
 
     private LocalDate inizioPrestito;
 
@@ -18,7 +14,7 @@ public class Prestito {
     private LocalDate restituzione;
 
     @ManyToOne
-    @JoinColumn(name = "libro_isbn")
+    @JoinColumn(name = "biblioteca_id")
     private Biblioteca biblioteca;
 
     @ManyToOne
@@ -26,22 +22,14 @@ public class Prestito {
     private Utente utente;
 
 
-
     public Prestito(){}
 
     public Prestito(Utente utente, Biblioteca biblioteca, LocalDate inizioPrestito, LocalDate restituzione) {
-
+        this.utente = utente;
+        this.biblioteca = biblioteca;
         this.inizioPrestito = inizioPrestito;
         this.restituzionePrevista = getRestituzionePrevista();
         this.restituzione = restituzione;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public LocalDate getInizioPrestito() {
@@ -69,14 +57,29 @@ public class Prestito {
         this.restituzione = restituzione;
     }
 
+    public Biblioteca getBiblioteca() {
+        return biblioteca;
+    }
+
+    public void setBiblioteca(Biblioteca biblioteca) {
+        this.biblioteca = biblioteca;
+    }
+
+    public Utente getUtente() {
+        return utente;
+    }
+
+    public void setUtente(Utente utente) {
+        this.utente = utente;
+    }
     public String toString() {
         return "Prestito{" +
-                "id=" + id +
+                "id=" + super.getId()+
                 ", inizioPrestito=" + inizioPrestito +
                 ", restituzionePrevista=" + restituzionePrevista +
                 ", restituzione=" + restituzione +
-                ", libro=" + biblioteca +
-                ", utente=" + utente +
+                ", libro="+ this.biblioteca +
+                ", utente=" + this.utente +
                 '}';
     }
 }

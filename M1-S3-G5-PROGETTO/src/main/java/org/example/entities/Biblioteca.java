@@ -1,45 +1,34 @@
 package org.example.entities;
-
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
+@Table(name = "biblioteca")
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name="biblioteca")
-public abstract class Biblioteca {
-
-    @Id
-    @GeneratedValue
-    protected long id;
-
+@AttributeOverride(name = "id", column = @Column(name = "biblioteca_id"))
+//@NamedQuery(name = "find_by_isbn", query = "SELECT b FROM biblioteca b WHERE isbn=:isbn")
+public abstract class Biblioteca extends BaseEntity{
 
     protected long isbn;
-
     protected String titolo;
-    protected LocalDate annoPubblicazione;
+    @Column(name = "anno_pubblicazione")
+    protected int annoPubblicazione;
     protected int pagine;
 
     @OneToMany(mappedBy="biblioteca")
     private List<Prestito> prestiti;
 
 
-    public Biblioteca() {
-    }
-    public Biblioteca(long isbn, String titolo, LocalDate annoPubblicazione, int pagine) {
+    public Biblioteca(long isbn, String titolo, int annoPubblicazione, int pagine) {
         this.isbn = isbn;
         this.titolo = titolo;
         this.annoPubblicazione = annoPubblicazione;
         this.pagine = pagine;
     }
-    public long getId() {
-        return id;
+    public Biblioteca() {
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public long getIsbn() {
         return isbn;
@@ -57,11 +46,11 @@ public abstract class Biblioteca {
         this.titolo = titolo;
     }
 
-    public LocalDate getAnnoPubblicazione() {
+    public int getAnnoPubblicazione() {
         return annoPubblicazione;
     }
 
-    public void setAnnoPubblicazione(LocalDate annoPubblicazione) {
+    public void setAnnoPubblicazione(int annoPubblicazione) {
         this.annoPubblicazione = annoPubblicazione;
     }
 
@@ -75,12 +64,9 @@ public abstract class Biblioteca {
 
     @Override
     public String toString() {
-        return "Libro{" +
-                "id=" + id +
-                ", isbn=" + isbn +
-                ", titolo='" + titolo + '\'' +
-                ", annoPubblicazione=" + annoPubblicazione +
-                ", pagine=" + pagine +
-                '}';
+        return String.format("LibraryItem [isbn=%s, titolo=%s, annoPubblicazione=%s, pagine=%s, id=%s]",
+                isbn, titolo, annoPubblicazione, pagine, getId());
     }
 }
+
+

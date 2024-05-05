@@ -22,19 +22,15 @@ public class PrestitoDAO {
             logInfo("Prestito salvato con successo");
         } catch (Exception e) {
             rollbackAndLogError("Prestito non salvato", e);
-        } finally {
-            closeEntityManager();
         }
     }
 
     public List<Prestito> findByTessera(long tessera) {
-        try {
+
             return em.createQuery("SELECT p FROM Prestito p WHERE p.utente.numeroTessera = :tessera", Prestito.class)
                     .setParameter("tessera", tessera)
                     .getResultList();
-        } finally {
-            closeEntityManager();
-        }
+
     }
 
     public void delete(long id) {
@@ -50,8 +46,6 @@ public class PrestitoDAO {
             }
         } catch (Exception e) {
             rollbackAndLogError("Prestito non eliminato", e);
-        } finally {
-            closeEntityManager();
         }
     }
 
@@ -67,12 +61,6 @@ public class PrestitoDAO {
     private void logError(String message, Exception e) {
         System.err.println(message);
         e.printStackTrace();
-    }
-
-    private void closeEntityManager() {
-        if (em != null && em.isOpen()) {
-            em.close();
-        }
     }
 }
 

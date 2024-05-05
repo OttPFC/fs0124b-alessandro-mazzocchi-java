@@ -4,26 +4,21 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "utenti")
-public class Utente {
-
-    @Id
-    @GeneratedValue
-    private long id;
+@AttributeOverride(name = "id", column = @Column(name = "utente_id"))
+public class Utente extends BaseEntity {
 
     private String nome;
     private String cognome;
+    @Column(name = "data_di_nascita")
     private LocalDate dataDiNascita;
-    @GeneratedValue
     private long numeroTessera;
 
-    @OneToMany(mappedBy = "utenti")
-    private List<Prestito> prestiti;
 
-    //@OneToMany
-    //@JoinTable()
+
 
     public Utente(String nome, String cognome, LocalDate dataDiNascita){
         this.nome = nome;
@@ -31,13 +26,8 @@ public class Utente {
         this.dataDiNascita = dataDiNascita;
     }
 
-    public long getId() {
-        return id;
-    }
+    public Utente(){};
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome;
@@ -74,7 +64,7 @@ public class Utente {
     @Override
     public String toString() {
         return "Utente{" +
-                "id=" + id +
+                "id=" + super.getId() +
                 ", nome='" + nome + '\'' +
                 ", cognome='" + cognome + '\'' +
                 ", dataDiNascita=" + dataDiNascita +
