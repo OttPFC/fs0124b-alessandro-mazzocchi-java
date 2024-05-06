@@ -19,8 +19,8 @@ public class Libri extends Biblioteca {
 
 
 
-    public Libri(long isbn, String titolo, int annoPubblicazione, int pagine, String autore, String genere) {
-        super(isbn, titolo, annoPubblicazione, pagine);
+    public Libri(long isbn, String titolo, int annoPublicazione, int pagine, String autore, String genere) {
+        super(isbn, titolo, annoPublicazione, pagine);
         this.autore = autore;
         this.genere = genere;
     }

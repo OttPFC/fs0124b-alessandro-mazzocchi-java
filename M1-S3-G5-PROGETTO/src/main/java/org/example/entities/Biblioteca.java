@@ -12,18 +12,18 @@ public abstract class Biblioteca extends BaseEntity{
 
     protected long isbn;
     protected String titolo;
-    @Column(name = "anno_pubblicazione")
-    protected int annoPubblicazione;
+    //@Column(name = "anno_pubblicazione")
+    protected int annoPublicazione;
     protected int pagine;
 
     @OneToMany(mappedBy="biblioteca")
     private List<Prestito> prestiti;
 
 
-    public Biblioteca(long isbn, String titolo, int annoPubblicazione, int pagine) {
+    public Biblioteca(long isbn, String titolo, int annoPublicazione, int pagine) {
         this.isbn = isbn;
         this.titolo = titolo;
-        this.annoPubblicazione = annoPubblicazione;
+        this.annoPublicazione = annoPublicazione;
         this.pagine = pagine;
     }
     public Biblioteca() {
@@ -46,12 +46,12 @@ public abstract class Biblioteca extends BaseEntity{
         this.titolo = titolo;
     }
 
-    public int getAnnoPubblicazione() {
-        return annoPubblicazione;
+    public int getAnnoPublicazione() {
+        return annoPublicazione;
     }
 
-    public void setAnnoPubblicazione(int annoPubblicazione) {
-        this.annoPubblicazione = annoPubblicazione;
+    public void setAnnoPublicazione(int annoPubblicazione) {
+        this.annoPublicazione = annoPublicazione;
     }
 
     public int getPagine() {
@@ -64,8 +64,8 @@ public abstract class Biblioteca extends BaseEntity{
 
     @Override
     public String toString() {
-        return String.format("LibraryItem [isbn=%s, titolo=%s, annoPubblicazione=%s, pagine=%s, id=%s]",
-                isbn, titolo, annoPubblicazione, pagine, getId());
+        return String.format("LibraryItem [isbn=%s, titolo=%s, annoPublicazione=%s, pagine=%s, id=%s]",
+                isbn, titolo, annoPublicazione, pagine, getId());
     }
 }
 

@@ -13,8 +13,8 @@ public class Riviste extends Biblioteca {
     @Column(name = "periodo")
     private Periodicita periodo;
 
-    public Riviste(long isbn, String titolo, int annoPubblicazione, int pagine, Periodicita periodo) {
-        super(isbn, titolo, annoPubblicazione, pagine);
+    public Riviste(long isbn, String titolo, int annoPublicazione, int pagine, Periodicita periodo) {
+        super(isbn, titolo, annoPublicazione, pagine);
         this.periodo = periodo;
     }
     public Riviste(){};

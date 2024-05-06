@@ -21,6 +21,9 @@ public class Prestito extends BaseEntity{
     @JoinColumn(name = "utente_id")
     private Utente utente;
 
+    @ManyToOne
+    @JoinColumn(name = "tessera_utente")
+    private Utente tessera;
 
     public Prestito(){}
 

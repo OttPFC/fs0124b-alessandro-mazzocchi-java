@@ -10,7 +10,7 @@ import java.util.List;
 
 public class BibliotecaDAO {
 
-    private EntityManager em;
+    private static EntityManager em;
 
     public BibliotecaDAO(EntityManager em) {
         this.em = em;
@@ -29,11 +29,9 @@ public class BibliotecaDAO {
 
     public Biblioteca findByIsbn(long isbn) {
         try {
-            System.out.println("Elemento trovato");
             return em.createQuery("SELECT b FROM Biblioteca b WHERE b.isbn = :isbn", Biblioteca.class)
                     .setParameter("isbn", isbn)
                     .getSingleResult();
-
         } catch (NoResultException e) {
             System.out.println("nullo");
             return null;
@@ -42,14 +40,34 @@ public class BibliotecaDAO {
         }
     }
 
-    public List<Biblioteca> findByYear(int year) {
-        return em.createQuery("SELECT i FROM Biblioteca i WHERE i.annoPublicazione = :year", Biblioteca.class)
-                .setParameter("publicationYear", year)
+    public List<Biblioteca> findByYear(int anno) {
+        return em.createQuery("SELECT i FROM Biblioteca i WHERE i.annoPublicazione =:anno", Biblioteca.class)
+                .setParameter("annoPublicazione", anno)
                 .getResultList();
     }
 
+    public static List<Biblioteca> findAll() {
+        return em.createQuery("SELECT b FROM Biblioteca b", Biblioteca.class)
+                .getResultList();
+    }
 
+    public void searchByAuthor(String autore){
+        List<Biblioteca> biblioteche = em.createQuery("SELECT b FROM Biblioteca b WHERE b.autore = :autore", Biblioteca.class)
+               .setParameter("autore", autore)
+               .getResultList();
+        for (Biblioteca biblioteca : biblioteche) {
+            System.out.println(biblioteca);
+        }
+    }
 
+    public void searchByTitle(String titolo){
+        List<Biblioteca> biblioteche = em.createQuery("SELECT b FROM Biblioteca b WHERE b.titolo LIKE :titolo", Biblioteca.class)
+                .setParameter("titolo", "%" + titolo + "%")
+                .getResultList();
+        for (Biblioteca biblioteca : biblioteche) {
+            System.out.println(biblioteca);
+        }
+    }
 
     public void delete(long isbn) {
         try {

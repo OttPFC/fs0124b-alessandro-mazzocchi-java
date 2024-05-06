@@ -1,6 +1,7 @@
 package org.example.dao;
 
 import jakarta.persistence.EntityManager;
+import org.example.entities.Biblioteca;
 import org.example.entities.Prestito;
 import org.example.entities.Utente;
 
@@ -25,12 +26,14 @@ public class PrestitoDAO {
         }
     }
 
-    public List<Prestito> findByTessera(long tessera) {
+    public void findByTessera(long numeroTessera) {
 
-            return em.createQuery("SELECT p FROM Prestito p WHERE p.utente.numeroTessera = :tessera", Prestito.class)
-                    .setParameter("tessera", tessera)
+            List<Prestito> p = em.createQuery("SELECT p FROM Prestito p WHERE p.utente.numeroTessera = :numeroTessera", Prestito.class)
+                    .setParameter("numeroTessera", numeroTessera)
                     .getResultList();
-
+        for (Prestito prestito : p) {
+            System.out.println(p);
+        }
     }
 
     public void delete(long id) {
@@ -49,6 +52,13 @@ public class PrestitoDAO {
         }
     }
 
+    public void scaduti(){
+        List<Prestito> p = em.createQuery("SELECT p FROM Prestito p WHERE p.scadenza < CURRENT_DATE", Prestito.class)
+               .getResultList();
+        for (Prestito prestito : p) {
+            System.out.println(p);
+        }
+    }
     private void rollbackAndLogError(String message, Exception e) {
         em.getTransaction().rollback();
         logError(message, e);
