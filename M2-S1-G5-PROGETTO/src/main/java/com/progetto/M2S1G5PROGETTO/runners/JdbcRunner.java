@@ -40,16 +40,16 @@ public class JdbcRunner implements CommandLineRunner {
             for (Utente utente : utenti) {
                 uDao.insert(utente);
             }
-            List<Edificio> fakeEdifici = createEdifici(4);
-            for (Edificio edificio : fakeEdifici) {
+            List<Edificio> edifici = createEdifici(4);
+            for (Edificio edificio : edifici) {
                 eDao.insert(edificio);
             }
-            List<Postazione> fakePostazioni = createPostazioni(10, fakeEdifici, utenti);
-            for (Postazione postazione : fakePostazioni) {
+            List<Postazione> postazioni = createPostazioni(10, edifici, utenti);
+            for (Postazione postazione : postazioni) {
                 pDao.insert(postazione);
             }
             List<Prenotazioni> prenotazioniEsistenti = prenotazioneDao.getAll();
-            List<Prenotazioni> prenotazioni = createPrenotazioni(10, fakeEdifici, utenti, fakePostazioni, prenotazioniEsistenti);
+            List<Prenotazioni> prenotazioni = createPrenotazioni(10, edifici, utenti, postazioni, prenotazioniEsistenti);
             for (Prenotazioni prenotazione : prenotazioni) {
                 prenotazioneDao.insert(prenotazione);
             }
