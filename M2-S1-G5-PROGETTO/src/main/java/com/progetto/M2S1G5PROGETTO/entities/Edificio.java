@@ -30,6 +30,6 @@ public class Edificio {
     @Column(name = "citta")
     private String citta;
 
-    @OneToMany(mappedBy = "edificio")
+    @OneToMany(mappedBy = "edificio", fetch = FetchType.LAZY)
     private List<Postazione> postazioni;
 }

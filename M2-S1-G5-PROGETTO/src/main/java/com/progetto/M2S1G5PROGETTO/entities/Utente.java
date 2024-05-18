@@ -10,7 +10,6 @@ import org.hibernate.validator.constraints.Email;
 
 import java.util.List;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -32,7 +31,6 @@ public class Utente {
     @Email
     private String email;
 
-    @OneToMany(mappedBy = "utente")
+    @OneToMany(mappedBy = "utente", fetch = FetchType.LAZY)
     private List<Prenotazioni> prenotazioni;
-
 }

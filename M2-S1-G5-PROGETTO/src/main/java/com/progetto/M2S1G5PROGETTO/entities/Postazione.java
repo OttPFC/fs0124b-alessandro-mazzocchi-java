@@ -28,6 +28,6 @@ public class Postazione {
     private Integer maxPax;
 
     @ManyToOne
+    @JoinColumn(name = "edificio_id")
     private Edificio edificio;
-
 }

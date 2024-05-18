@@ -58,6 +58,7 @@ public class JdbcRunner implements CommandLineRunner {
             log.error("Errore durante l'inserimento delle prenotazioni nel database: {}", e.getMessage());
             throw e;
         }
+
     }
 
     public static List<Utente> createUtenti(int quantity) {
