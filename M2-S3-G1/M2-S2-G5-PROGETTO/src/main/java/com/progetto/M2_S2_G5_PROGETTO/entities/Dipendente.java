@@ -1,6 +1,7 @@
 package com.progetto.M2_S2_G5_PROGETTO.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
@@ -11,25 +12,22 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "dispositivo")
+@Table(name = "dipendente")
 @Builder(setterPrefix = "with")
-public class Dispositivo {
+public class Dipendente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
+    @NotBlank
+    private String username;
     @NotBlank
     private String nome;
     @NotBlank
-    private String tipo;
-
+    private String cognome;
     @NotBlank
-    @Enumerated(EnumType.STRING)
-    private Stato stato;
+    @Email
+    private String email;
 
-    @NotBlank
-    private String image;
-
-    @ManyToOne
-    private Dipendente dipendente;
+    private String avatar;
 }
