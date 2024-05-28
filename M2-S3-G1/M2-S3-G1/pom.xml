@@ -11,7 +11,7 @@
 	<groupId>com.progetto</groupId>
 	<artifactId>M2-S3-G1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>M2-S2-G5-PROGETTO</name>
+	<name>M2-S3-G1</name>
 	<description>Progetto settimanale</description>
 	<properties>
 		<java.version>17</java.version>
@@ -64,6 +64,17 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<!-- Thymeleaf dependency for HTML templates -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<!-- BCrypt dependency for password encoding -->
+		<dependency>
+			<groupId>org.mindrot</groupId>
+			<artifactId>jbcrypt</artifactId>
+			<version>0.4</version>
 		</dependency>
 	</dependencies>
 	<build>

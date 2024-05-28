@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import com.progetto.M2_S3_G1.entities.User;
 @Configuration
@@ -42,8 +44,7 @@ public class SecurityConfig {
             if (user == null) {
                 throw new UsernameNotFoundException("User not found");
             }
-            return user; // Restituisce direttamente l'oggetto user
+            return user;
         };
     }
-
 }

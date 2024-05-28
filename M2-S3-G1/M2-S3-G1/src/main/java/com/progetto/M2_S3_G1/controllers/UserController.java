@@ -1,20 +1,29 @@
 package com.progetto.M2_S3_G1.controllers;
 
+import com.progetto.M2_S3_G1.entities.User;
+import com.progetto.M2_S3_G1.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
-@RestController
-@RequestMapping("/api")
+@Controller
 public class UserController {
 
-    @GetMapping("/public")
-    public String publicEndpoint() {
-        return "This is a public endpoint";
+    @Autowired
+    private UserService userService;
+
+    @GetMapping("/register")
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("user", new User());
+        return "register";
     }
 
-    @GetMapping("/private")
-    public String privateEndpoint() {
-        return "This is a private endpoint";
+    @PostMapping("/register")
+    public String registerUser(@ModelAttribute User user) {
+        userService.save(user);
+        return "redirect:/login";
     }
 }
