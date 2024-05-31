@@ -3,8 +3,6 @@ package com.gestioneeventi.M2_S3_G5_PROGETTO.datalayer.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 
@@ -23,9 +21,12 @@ public class Booking extends BaseEntity {
     private String content;
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime publishedAt;
-    @ManyToOne
-    private Users author;
-    @ManyToOne
-    private Event event;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private Users user;
+
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    private Event event;
 }

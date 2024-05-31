@@ -3,11 +3,8 @@ package com.gestioneeventi.M2_S3_G5_PROGETTO.datalayer.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -21,17 +18,23 @@ public class Event extends BaseEntity {
     @SequenceGenerator(name = "event_seq", sequenceName = "event_seq")
     @EqualsAndHashCode.Include
     private long id;
+
     @Column(length = 80, nullable = false)
     private String name;
+
     @Column(length = 1024, nullable = false)
     private String description;
+
     @ManyToOne
+    @JoinColumn(name = "author_id")
     private Users author;
+
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime dateTime;
 
+    @Column(length = 255)
+    private String location;
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Booking> bookings;
-
 }

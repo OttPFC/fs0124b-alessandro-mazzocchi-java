@@ -32,7 +32,7 @@ public class Users extends BaseEntity {
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private final List<RoleEntity> roles = new ArrayList<>();
 
-    private String cretedBy;
+    private String createdBy;
     private String updatedBy;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
@@ -49,8 +49,7 @@ public class Users extends BaseEntity {
     }
 
     private String role;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Booking> bookings;
-
-
 }
